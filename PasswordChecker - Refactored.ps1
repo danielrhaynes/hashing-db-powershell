@@ -1,4 +1,6 @@
 ﻿#Function declarations
+#this funtion is needed because PowerShell doesn't natively have a particularly neat way to hash a string. Get-FlieHash doesn't take input strings directly, but it can take input from a .NET MemoryStream
+#object, which is exactly what this function gives it, and then returns a hash of the input string.
 function Get-StringHash {
 
     param (
