@@ -15,7 +15,7 @@ function Get-StringHash {
 
     $shadowPass = Get-FileHash -InputStream $stream
     return $shadowPass.Hash
-}
+    }
 
 #User Input
 $usernamePrompt = Read-Host -Prompt 'Username'
@@ -43,15 +43,15 @@ $searchReturn = Get-Content "D:\Daniel\Desktop\Scripting Projects\Password Scrip
     else{
         [bool]$script:foundUser = $false
         }
-}
+    }
 
 #If there is something in the $resultsTable, concatenates the Salt field of the table with the password prompt input and calls our Get-StringHash function
 &{
     if ($foundUser){
-    $saltPWConcat = ($passwordPrompt + [string]$resultsTable.Salt)
-    $script:pwCheck = Get-StringHash -String $saltPWConcat
+        $saltPWConcat = ($passwordPrompt + [string]$resultsTable.Salt)
+        $script:pwCheck = Get-StringHash -String $saltPWConcat
+        }
     }
-}
 
 #if the stored copy and the reconstructed version of the shadowpass match, and if the $foundUser flag is true, reports a success, reports failure otherwise.
 &{
@@ -61,7 +61,7 @@ $searchReturn = Get-Content "D:\Daniel\Desktop\Scripting Projects\Password Scrip
      else{
         Write-Warning -Message "Oopsie daisy!"
         }
-}
+    }
 
 #variable cleanup
 #Unnecessary if you're running this script in a way that terminates the current context on exit, but running things in the ISE does not do that, and so this block just exists
